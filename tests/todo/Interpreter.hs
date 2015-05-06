@@ -9,24 +9,28 @@ data Instr = IConst Int | IBinOp BinOp
 type Prog  = [Instr]
 type Stack = [Int]
 
-binOpDenote Plus  = (+)
-binOpDenote Times = (*)
+{-@ measure binOpDenote @-}
+binOpDenote :: Int -> Int -> BinOp -> Int -- (Int -> Int -> Int)
+binOpDenote x y Plus  = (x+y)
+binOpDenote x y Times = (x*y)
 
+{-@ measure expDenote :: Exp -> Int @-}
 expDenote :: Exp -> Int 
 expDenote (EConst n)       = n
-expDenote (EBinOp b e1 e2) = (binOpDenote b) (expDenote e1) (expDenote e2)
+expDenote (EBinOp b e1 e2) = (\x y -> binOpDenote x y b) (expDenote e1) (expDenote e2)
 
 instrDenote :: Stack -> Instr -> Maybe Stack
 instrDenote s       (IConst n) = Just (n:s)
-instrDenote (x:y:s) (IBinOp b) = Just ((binOpDenote b) x y:s)
+instrDenote (x:y:s) (IBinOp b) = Just ((\x y -> binOpDenote x y b) x y:s)
 instrDenote _        _         = Nothing
 
+{- measure progDenote :: Stack -> Prog -> Maybe Stack @-}
 progDenote :: Stack -> Prog -> Maybe Stack
 progDenote s [] = Just s
 progDenote s (x:xs) | Just s' <- instrDenote s x = progDenote s' xs
                     | otherwise                  = Nothing
 
-{-@ compile :: e:Exp -> {v:Prog | (progDenote [] v) == Just ([expDenote e])} @-}
+{- compile :: e:Exp -> {v:Prog | (progDenote [] v) == Just ([(expDenote e)])} @-}
 compile :: Exp -> Prog
 compile (EConst n)       = [IConst n]
 compile (EBinOp b e1 e2) = compile e2 ++ compile e1 ++ [IBinOp b] 
