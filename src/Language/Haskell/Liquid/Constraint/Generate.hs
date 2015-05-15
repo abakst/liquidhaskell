@@ -1202,13 +1202,13 @@ consBind isRec γ (x, e, Asserted spect)
        addIdA x (defAnn isRec spect)
        return $ Asserted spect -- Nothing
 
-consBind isRec γ (x, e, Assumed spect)
-  = do let γ' = (γ `setLoc` getSrcSpan x) `setBind` x
-       γπ    <- foldM addPToEnv γ' πs
-       cconsE γπ e =<< true spect
+consBind isRec _γ (x, _e, Assumed spect)
+  = do -- let γ' = (γ `setLoc` getSrcSpan x) `setBind` x
+       -- γπ    <- foldM addPToEnv γ' πs
+       -- cconsE γπ e =<< true spect
        addIdA x (defAnn isRec spect)
        return $ Asserted spect -- Nothing
-  where πs   = ty_preds $ toRTypeRep spect
+--   where πs   = ty_preds $ toRTypeRep spect
 
 consBind isRec γ (x, e, Unknown)
   = do t     <- consE (γ `setBind` x) e
