@@ -1,6 +1,5 @@
 {-@ LIQUID "--no-termination" @-}
 {-@ LIQUID "--short-names"    @-}
-{-@ LIQUID "--diff"           @-}
 
 module KMP (search) where
 
@@ -89,6 +88,7 @@ fill p t@(IOA m _) = go
 data IOArr a = IOA { size :: Int
                    , pntr :: IORef (Arr a)
                    }
+{-@ data variance IOArr contravariant @-}
 
 {-@ data IOArr a <p :: Int -> a -> Prop>
       = IOA { size :: Nat
