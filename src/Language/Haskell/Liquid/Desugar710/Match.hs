@@ -8,11 +8,11 @@ The @match@ function
 
 {-# LANGUAGE CPP #-}
 
-module Match ( match, matchEquations, matchWrapper, matchSimply, matchSinglePat ) where
+module Language.Haskell.Liquid.Desugar710.Match ( match, matchEquations, matchWrapper, matchSimply, matchSinglePat ) where
 
 #include "HsVersions.h"
 
-import {-#SOURCE#-} DsExpr (dsLExpr, dsExpr)
+import {-#SOURCE#-} Language.Haskell.Liquid.Desugar710.DsExpr (dsLExpr, dsExpr)
 
 import DynFlags
 import HsSyn
@@ -25,15 +25,15 @@ import Literal
 import CoreUtils
 import MkCore
 import DsMonad
-import DsBinds
-import DsGRHSs
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsBinds
+import Language.Haskell.Liquid.Desugar710.DsGRHSs
+import Language.Haskell.Liquid.Desugar710.DsUtils
 import Id
 import ConLike
 import DataCon
 import PatSyn
-import MatchCon
-import MatchLit
+import Language.Haskell.Liquid.Desugar710.MatchCon
+import Language.Haskell.Liquid.Desugar710.MatchLit
 import Type
 import TyCon( isNewTyCon )
 import TysWiredIn

@@ -8,17 +8,18 @@ Desugaring exporessions.
 
 {-# LANGUAGE CPP #-}
 
-module DsExpr ( dsExpr, dsLExpr, dsLocalBinds, dsValBinds, dsLit ) where
+module Language.Haskell.Liquid.Desugar710.DsExpr ( dsExpr, dsLExpr, dsLocalBinds, dsValBinds, dsLit ) where
 
 #include "HsVersions.h"
 
-import Match
-import MatchLit
-import DsBinds
-import DsGRHSs
-import DsListComp
-import DsUtils
-import DsArrows
+import Language.Haskell.Liquid.Desugar710.Match
+import Language.Haskell.Liquid.Desugar710.MatchLit
+import Language.Haskell.Liquid.Desugar710.DsBinds
+import Language.Haskell.Liquid.Desugar710.DsGRHSs
+import Language.Haskell.Liquid.Desugar710.DsListComp
+import Language.Haskell.Liquid.Desugar710.DsUtils
+import Language.Haskell.Liquid.Desugar710.DsArrows
+
 import DsMonad
 import Name
 import NameEnv

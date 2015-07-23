@@ -79,7 +79,7 @@ import Language.Fixpoint.Names      (symSepName, isSuffixOfSym, singletonSym)
 #if __GLASGOW_HASKELL__ < 710
 import Language.Haskell.Liquid.Desugar78.HscMain
 #else
-import qualified HscMain as GHC
+import Language.Haskell.Liquid.Desugar710.HscMain
 #endif
 
 
@@ -466,7 +466,6 @@ symbolFastString  :: Symbol -> FastString
 lintCoreBindings  :: [Var] -> CoreProgram -> (Bag MsgDoc, Bag MsgDoc)
 synTyConRhs_maybe :: TyCon -> Maybe Type
 
-#if __GLASGOW_HASKELL__ < 710
 
 desugarModule tcm = do
   let ms = pm_mod_summary $ tm_parsed_module tcm
@@ -475,7 +474,22 @@ desugarModule tcm = do
   hsc_env <- getSession
   let hsc_env_tmp = hsc_env { hsc_dflags = ms_hspp_opts ms }
   guts <- liftIO $ hscDesugarWithLoc hsc_env_tmp ms tcg
-  return $ DesugaredModule { dm_typechecked_module = tcm, dm_core_module = guts }
+  return $ DesugaredModule { dm_typechecked_module = tcm,
+                             dm_core_module = guts }
+
+{-
+desugarModule tcm = do
+  let ms = pm_mod_summary $ tm_parsed_module tcm
+  -- let ms = modSummary tcm
+  let (tcg, _) = tm_internals tcm
+  hsc_env <- getSession
+  let hsc_env_tmp = hsc_env { hsc_dflags = ms_hspp_opts ms }
+  guts <- liftIO $ hscDesugarWithLoc hsc_env_tmp ms tcg
+  return $ DesugaredModule { dm_typechecked_module = tcm,
+                             dm_core_module        = guts }
+-}
+
+#if __GLASGOW_HASKELL__ < 710
 
 symbolFastString = T.unsafeDupablePerformIO
                  . mkFastStringByteString
@@ -495,16 +509,6 @@ type Prec = TyPrec
 
 -- OLD
 -- desugarModule     = GHC.desugarModule
-
--- desugarModule :: GhcMonad m => TypecheckedModule -> m DesugaredModule
-desugarModule tcm = do
-  let ms = modSummary tcm
-  let (tcg, _) = tm_internals tcm
-  hsc_env <- getSession
-  let hsc_env_tmp = hsc_env { hsc_dflags = ms_hspp_opts ms }
-  guts <- liftIO $ hscDesugarWithLoc hsc_env_tmp ms tcg
-  return $ DesugaredModule { dm_typechecked_module = tcm,
-                             dm_core_module        = guts }
 
 symbolFastString  = mkFastStringByteString
                   . T.encodeUtf8

@@ -30,12 +30,10 @@ module Language.Haskell.Liquid.Desugar78.HscMain (hscDesugarWithLoc) where
 
 import Language.Haskell.Liquid.Desugar78.Desugar (deSugarWithLoc)
 
-import Module 
+import Module
 import Lexer
 import TcRnMonad
-
 import ErrUtils
-
 import HscTypes
 import Bag
 import Exception
@@ -58,7 +56,7 @@ logWarnings w = Hsc $ \_ w0 -> return ((), w0 `unionBags` w)
 throwErrors :: ErrorMessages -> Hsc a
 throwErrors = liftIO . throwIO . mkSrcErr
 
--- 
+--
 -- | Convert a typechecked module to Core
 hscDesugarWithLoc :: HscEnv -> ModSummary -> TcGblEnv -> IO ModGuts
 hscDesugarWithLoc hsc_env mod_summary tc_result =

@@ -8,7 +8,7 @@ The Desugarer: turning HsSyn into Core.
 
 {-# LANGUAGE CPP #-}
 
-module Desugar ( deSugar, deSugarExpr ) where
+module Language.Haskell.Liquid.Desugar710.Desugar ( deSugar, deSugarExpr ) where
 
 import DynFlags
 import HscTypes
@@ -28,9 +28,9 @@ import CoreSyn
 import CoreSubst
 import PprCore
 import DsMonad
-import DsExpr
-import DsBinds
-import DsForeign
+import Language.Haskell.Liquid.Desugar710.DsExpr
+import Language.Haskell.Liquid.Desugar710.DsBinds
+import Language.Haskell.Liquid.Desugar710.DsForeign
 import Module
 import NameSet
 import NameEnv

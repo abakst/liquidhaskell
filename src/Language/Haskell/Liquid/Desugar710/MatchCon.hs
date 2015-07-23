@@ -8,20 +8,20 @@ Pattern-matching constructors
 
 {-# LANGUAGE CPP #-}
 
-module MatchCon ( matchConFamily, matchPatSyn ) where
+module Language.Haskell.Liquid.Desugar710.MatchCon ( matchConFamily, matchPatSyn ) where
 
 #include "HsVersions.h"
 
-import {-# SOURCE #-} Match     ( match )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.Match     ( match )
 
 import HsSyn
-import DsBinds
+import Language.Haskell.Liquid.Desugar710.DsBinds -- LIQUID
 import ConLike
 import DataCon
 import PatSyn
 import TcType
 import DsMonad
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsUtils
 import MkCore   ( mkCoreLets )
 import Util
 import ListSetOps ( runs )

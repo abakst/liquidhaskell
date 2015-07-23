@@ -12,18 +12,18 @@ lower levels it is preserved with @let@/@letrec@s).
 
 {-# LANGUAGE CPP #-}
 
-module DsBinds ( dsTopLHsBinds, dsLHsBinds, decomposeRuleLhs, dsSpec,
+module Language.Haskell.Liquid.Desugar710.DsBinds ( dsTopLHsBinds, dsLHsBinds, decomposeRuleLhs, dsSpec,
                  dsHsWrapper, dsTcEvBinds, dsEvBinds
   ) where
 
 #include "HsVersions.h"
 
-import {-# SOURCE #-}   DsExpr( dsLExpr )
-import {-# SOURCE #-}   Match( matchWrapper )
+import {-# SOURCE #-}   Language.Haskell.Liquid.Desugar710.DsExpr( dsLExpr )
+import {-# SOURCE #-}   Language.Haskell.Liquid.Desugar710.Match( matchWrapper )
 
 import DsMonad
-import DsGRHSs
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsGRHSs
+import Language.Haskell.Liquid.Desugar710.DsUtils
 
 import HsSyn            -- lots of things
 import CoreSyn          -- lots of things

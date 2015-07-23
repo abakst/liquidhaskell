@@ -8,11 +8,11 @@ Desugaring list comprehensions, monad comprehensions and array comprehensions
 
 {-# LANGUAGE CPP, NamedFieldPuns #-}
 
-module DsListComp ( dsListComp, dsPArrComp, dsMonadComp ) where
+module Language.Haskell.Liquid.Desugar710.DsListComp ( dsListComp, dsPArrComp, dsMonadComp ) where
 
 #include "HsVersions.h"
 
-import {-# SOURCE #-} DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
 
 import HsSyn
 import TcHsSyn
@@ -20,14 +20,14 @@ import CoreSyn
 import MkCore
 
 import DsMonad          -- the monadery used in the desugarer
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsUtils
 
 import DynFlags
 import CoreUtils
 import Id
 import Type
 import TysWiredIn
-import Match
+import Language.Haskell.Liquid.Desugar710.Match
 import PrelNames
 import SrcLoc
 import Outputable

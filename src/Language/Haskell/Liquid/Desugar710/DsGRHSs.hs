@@ -8,12 +8,12 @@ Matching guarded right-hand-sides (GRHSs)
 
 {-# LANGUAGE CPP #-}
 
-module DsGRHSs ( dsGuarded, dsGRHSs, dsGRHS ) where
+module Language.Haskell.Liquid.Desugar710.DsGRHSs ( dsGuarded, dsGRHSs, dsGRHS ) where
 
 #include "HsVersions.h"
 
-import {-# SOURCE #-} DsExpr  ( dsLExpr, dsLocalBinds )
-import {-# SOURCE #-} Match   ( matchSinglePat )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.DsExpr  ( dsLExpr, dsLocalBinds )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.Match   ( matchSinglePat )
 
 import HsSyn
 import MkCore
@@ -22,7 +22,7 @@ import Var
 import Type
 
 import DsMonad
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsUtils
 import TysWiredIn
 import PrelNames
 import Module

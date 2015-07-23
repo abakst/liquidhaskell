@@ -8,12 +8,12 @@ Desugaring arrow commands
 
 {-# LANGUAGE CPP #-}
 
-module DsArrows ( dsProcExpr ) where
+module Language.Haskell.Liquid.Desugar710.DsArrows ( dsProcExpr ) where
 
 #include "HsVersions.h"
 
-import Match
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.Match
+import Language.Haskell.Liquid.Desugar710.DsUtils
 import DsMonad
 
 import HsSyn    hiding (collectPatBinders, collectPatsBinders, collectLStmtsBinders, collectLStmtBinders, collectStmtBinders )
@@ -24,7 +24,7 @@ import TcHsSyn
 --     So WATCH OUT; check each use of split*Ty functions.
 -- Sigh.  This is a pain.
 
-import {-# SOURCE #-} DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
 
 import TcType
 import TcEvidence
@@ -32,7 +32,7 @@ import CoreSyn
 import CoreFVs
 import CoreUtils
 import MkCore
-import DsBinds (dsHsWrapper)
+import Language.Haskell.Liquid.Desugar710.DsBinds (dsHsWrapper)
 
 import Name
 import Var

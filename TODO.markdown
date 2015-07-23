@@ -1096,3 +1096,56 @@ GHC 7.10
 
 GHC 7.10 Desugar
 ----------------
+
+Check.lhs
+Coverage.lhs
+Desugar.lhs
+DsArrows.lhs
+DsBinds.lhs
+DsExpr.lhs
+DsExpr.lhs-boot
+DsForeign.lhs
+DsGRHSs.lhs
+DsListComp.lhs
+DsMeta.hs
+DsMonad.lhs
+DsMonad.lhs-boot
+DsUtils.lhs
+Match.lhs
+Match.lhs-boot
+MatchCon.lhs
+MatchLit.lhs
+HscMain.hs
+
+
+
+Check.hs
+Coverage.hs
+Desugar.hs
+DsArrows.hs
+DsBinds.hs
+  DsCCall.hs
+DsExpr.hs
+DsExpr.hs-boot
+DsForeign.hs
+DsGRHSs.hs
+DsListComp.hs
+DsMeta.hs
+DsMonad.hs
+
+DsUtils.hs
+Match.hs
+Match.hs-boot
+MatchCon.hs
+MatchLit.hs
+  StaticPtrTable.hs
+
+
+Main thing.
+
+  -dsLExpr (L loc e) = putSrcSpanDs loc $ dsExpr e
+  +dsLExpr (L loc e)
+  +  = do ce <- putSrcSpanDs loc $ dsExpr e
+  +       m  <- getModule
+  +       return $ Tick (srcSpanTick m loc) ce
+  ~

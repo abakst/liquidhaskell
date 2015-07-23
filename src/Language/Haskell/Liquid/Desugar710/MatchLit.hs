@@ -8,7 +8,7 @@ Pattern-matching literal patterns
 
 {-# LANGUAGE CPP, ScopedTypeVariables #-}
 
-module MatchLit ( dsLit, dsOverLit, hsLitKey, hsOverLitKey
+module Language.Haskell.Liquid.Desugar710.MatchLit ( dsLit, dsOverLit, hsLitKey, hsOverLitKey
                 , tidyLitPat, tidyNPat
                 , matchLiterals, matchNPlusKPats, matchNPats
                 , warnAboutIdentities, warnAboutEmptyEnumerations
@@ -16,11 +16,11 @@ module MatchLit ( dsLit, dsOverLit, hsLitKey, hsOverLitKey
 
 #include "HsVersions.h"
 
-import {-# SOURCE #-} Match  ( match )
-import {-# SOURCE #-} DsExpr ( dsExpr )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.Match  ( match )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar710.DsExpr ( dsExpr )
 
 import DsMonad
-import DsUtils
+import Language.Haskell.Liquid.Desugar710.DsUtils
 
 import HsSyn
 
