@@ -6,11 +6,11 @@
 The @match@ function
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.Match ( match, matchEquations, matchWrapper, matchSimply, matchSinglePat ) where
+module Language.Haskell.Liquid.Desugar78.Match ( match, matchEquations, matchWrapper, matchSimply, matchSinglePat ) where
 
 -- #include "HsVersions.h"
 
-import {-#SOURCE#-} Language.Haskell.Liquid.Desugar.DsExpr (dsLExpr, dsExpr)
+import {-#SOURCE#-} Language.Haskell.Liquid.Desugar78.DsExpr (dsLExpr, dsExpr)
 
 import DynFlags
 import HsSyn
@@ -23,15 +23,15 @@ import Literal
 import CoreUtils
 import MkCore
 import DsMonad
-import Language.Haskell.Liquid.Desugar.DsBinds
-import Language.Haskell.Liquid.Desugar.DsGRHSs
-import Language.Haskell.Liquid.Desugar.DsUtils
+import Language.Haskell.Liquid.Desugar78.DsBinds
+import Language.Haskell.Liquid.Desugar78.DsGRHSs
+import Language.Haskell.Liquid.Desugar78.DsUtils
 import Id
 import ConLike
 import DataCon
 import PatSyn
-import Language.Haskell.Liquid.Desugar.MatchCon
-import Language.Haskell.Liquid.Desugar.MatchLit
+import Language.Haskell.Liquid.Desugar78.MatchCon
+import Language.Haskell.Liquid.Desugar78.MatchLit
 import Type
 import TysWiredIn
 import ListSetOps

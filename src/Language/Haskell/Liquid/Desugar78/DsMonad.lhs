@@ -6,7 +6,7 @@
 @DsMonad@: monadery used in desugaring
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.DsMonad (
+module Language.Haskell.Liquid.Desugar78.DsMonad (
         DsM, mapM, mapAndUnzipM,
         initDs, initDsTc, fixDs,
         foldlM, foldrM, whenGOptM, unsetGOptM, unsetWOptM,

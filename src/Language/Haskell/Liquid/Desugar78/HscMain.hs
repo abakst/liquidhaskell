@@ -26,9 +26,9 @@
 --
 -------------------------------------------------------------------------------
 
-module Language.Haskell.Liquid.Desugar.HscMain (hscDesugarWithLoc) where
+module Language.Haskell.Liquid.Desugar78.HscMain (hscDesugarWithLoc) where
 
-import Language.Haskell.Liquid.Desugar.Desugar (deSugarWithLoc)
+import Language.Haskell.Liquid.Desugar78.Desugar (deSugarWithLoc)
 
 import Module 
 import Lexer

@@ -16,7 +16,7 @@ This module exports some utility functions of no great interest.
 -- for details
 
 -- | Utility functions for constructing Core syntax, principally for desugaring
-module Language.Haskell.Liquid.Desugar.DsUtils (
+module Language.Haskell.Liquid.Desugar78.DsUtils (
 	EquationInfo(..), 
 	firstPat, shiftEqns,
 
@@ -45,14 +45,14 @@ module Language.Haskell.Liquid.Desugar.DsUtils (
 
 -- #include "HsVersions.h"
 
-import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar.Match ( matchSimply )
+import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar78.Match ( matchSimply )
 
 import HsSyn
 import TcHsSyn
 import TcType( tcSplitTyConApp )
 import CoreSyn
 import DsMonad
-import {-# SOURCE #-} Language.Haskell.Liquid.Desugar.DsExpr ( dsLExpr )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar78.DsExpr ( dsLExpr )
 
 import CoreUtils
 import MkCore

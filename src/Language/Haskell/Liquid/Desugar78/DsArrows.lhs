@@ -13,12 +13,12 @@ Desugaring arrow commands
 --     http://ghc.haskell.org/trac/ghc/wiki/Commentary/CodingStyle#TabsvsSpaces
 -- for details
 
-module Language.Haskell.Liquid.Desugar.DsArrows ( dsProcExpr ) where
+module Language.Haskell.Liquid.Desugar78.DsArrows ( dsProcExpr ) where
 
 -- #include "HsVersions.h"
 
-import Language.Haskell.Liquid.Desugar.Match
-import Language.Haskell.Liquid.Desugar.DsUtils
+import Language.Haskell.Liquid.Desugar78.Match
+import Language.Haskell.Liquid.Desugar78.DsUtils
 import DsMonad
 
 import HsSyn	hiding (collectPatBinders, collectPatsBinders, collectLStmtsBinders, collectLStmtBinders, collectStmtBinders )
@@ -29,7 +29,7 @@ import TcHsSyn
 --     So WATCH OUT; check each use of split*Ty functions.
 -- Sigh.  This is a pain.
 
-import {-# SOURCE #-} Language.Haskell.Liquid.Desugar.DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar78.DsExpr ( dsExpr, dsLExpr, dsLocalBinds )
 
 import TcType
 import TcEvidence
@@ -37,7 +37,7 @@ import CoreSyn
 import CoreFVs
 import CoreUtils
 import MkCore
-import Language.Haskell.Liquid.Desugar.DsBinds (dsHsWrapper)
+import Language.Haskell.Liquid.Desugar78.DsBinds (dsHsWrapper)
 
 import Name
 import Var
