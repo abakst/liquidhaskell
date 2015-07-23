@@ -450,29 +450,26 @@ fastStringText = T.decodeUtf8 . fastStringToByteString
 tyConTyVarsDef c | TC.isPrimTyCon c || isFunTyCon c = []
 tyConTyVarsDef c | TC.isPromotedTyCon   c = error ("TyVars on " ++ show c) -- tyConTyVarsDef $ TC.ty_con c
 tyConTyVarsDef c | TC.isPromotedDataCon c = error ("TyVars on " ++ show c) -- DC.dataConUnivTyVars $ TC.datacon c
-tyConTyVarsDef c = TC.tyConTyVars c 
+tyConTyVarsDef c = TC.tyConTyVars c
 
 
 
 ----------------------------------------------------------------------
--- GHC Compatibility Layer
+-- | GHC Compatibility Layer
 ----------------------------------------------------------------------
 
 gHC_VERSION :: String
 gHC_VERSION = show __GLASGOW_HASKELL__
 
-desugarModule :: TypecheckedModule -> Ghc DesugaredModule
-
-symbolFastString :: Symbol -> FastString
-
-lintCoreBindings :: [Var] -> CoreProgram -> (Bag MsgDoc, Bag MsgDoc)
-
+desugarModule     :: TypecheckedModule -> Ghc DesugaredModule
+symbolFastString  :: Symbol -> FastString
+lintCoreBindings  :: [Var] -> CoreProgram -> (Bag MsgDoc, Bag MsgDoc)
 synTyConRhs_maybe :: TyCon -> Maybe Type
 
 #if __GLASGOW_HASKELL__ < 710
 
 desugarModule tcm = do
-  let ms = pm_mod_summary $ tm_parsed_module tcm 
+  let ms = pm_mod_summary $ tm_parsed_module tcm
   -- let ms = modSummary tcm
   let (tcg, _) = tm_internals_ tcm
   hsc_env <- getSession
@@ -480,8 +477,10 @@ desugarModule tcm = do
   guts <- liftIO $ hscDesugarWithLoc hsc_env_tmp ms tcg
   return $ DesugaredModule { dm_typechecked_module = tcm, dm_core_module = guts }
 
-
-symbolFastString = T.unsafeDupablePerformIO . mkFastStringByteString . T.encodeUtf8 . symbolText
+symbolFastString = T.unsafeDupablePerformIO
+                 . mkFastStringByteString
+                 . T.encodeUtf8
+                 . symbolText
 
 lintCoreBindings = CoreLint.lintCoreBindings
 
@@ -492,13 +491,26 @@ synTyConRhs_maybe _                     = Nothing
 
 #else
 
-desugarModule = GHC.desugarModule
-
-symbolFastString = mkFastStringByteString . T.encodeUtf8 . symbolText
-
 type Prec = TyPrec
 
-lintCoreBindings = CoreLint.lintCoreBindings CoreDoNothing
+-- OLD
+-- desugarModule     = GHC.desugarModule
+
+-- desugarModule :: GhcMonad m => TypecheckedModule -> m DesugaredModule
+desugarModule tcm = do
+  let ms = modSummary tcm
+  let (tcg, _) = tm_internals tcm
+  hsc_env <- getSession
+  let hsc_env_tmp = hsc_env { hsc_dflags = ms_hspp_opts ms }
+  guts <- liftIO $ hscDesugarWithLoc hsc_env_tmp ms tcg
+  return $ DesugaredModule { dm_typechecked_module = tcm,
+                             dm_core_module        = guts }
+
+symbolFastString  = mkFastStringByteString
+                  . T.encodeUtf8
+                  . symbolText
+
+lintCoreBindings  = CoreLint.lintCoreBindings CoreDoNothing
 
 synTyConRhs_maybe = TC.synTyConRhs_maybe
 
