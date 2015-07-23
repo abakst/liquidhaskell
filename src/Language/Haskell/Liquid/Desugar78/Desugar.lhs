@@ -6,7 +6,7 @@
 The Desugarer: turning HsSyn into Core.
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.Desugar ( deSugarWithLoc, deSugar, deSugarExpr ) where
+module Language.Haskell.Liquid.Desugar78.Desugar ( deSugarWithLoc, deSugar, deSugarExpr ) where
 
 import DynFlags
 import HscTypes
@@ -26,9 +26,9 @@ import CoreSyn
 import CoreSubst
 import PprCore
 import DsMonad
-import Language.Haskell.Liquid.Desugar.DsExpr
-import Language.Haskell.Liquid.Desugar.DsBinds
-import Language.Haskell.Liquid.Desugar.DsForeign
+import Language.Haskell.Liquid.Desugar78.DsExpr
+import Language.Haskell.Liquid.Desugar78.DsBinds
+import Language.Haskell.Liquid.Desugar78.DsForeign
 import Module
 import NameSet
 import NameEnv

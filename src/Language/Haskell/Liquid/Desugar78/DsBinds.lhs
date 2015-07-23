@@ -17,18 +17,18 @@ lower levels it is preserved with @let@/@letrec@s).
 --     http://ghc.haskell.org/trac/ghc/wiki/Commentary/CodingStyle#TabsvsSpaces
 -- for details
 
-module Language.Haskell.Liquid.Desugar.DsBinds ( dsTopLHsBinds, dsLHsBinds, decomposeRuleLhs, dsSpec,
+module Language.Haskell.Liquid.Desugar78.DsBinds ( dsTopLHsBinds, dsLHsBinds, decomposeRuleLhs, dsSpec,
                  dsHsWrapper, dsTcEvBinds, dsEvBinds
   ) where
 
 -- #include "HsVersions.h"
 
-import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar.DsExpr( dsLExpr )
-import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar.Match( matchWrapper )
+import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar78.DsExpr( dsLExpr )
+import {-# SOURCE #-}	Language.Haskell.Liquid.Desugar78.Match( matchWrapper )
 
 import DsMonad
-import Language.Haskell.Liquid.Desugar.DsGRHSs
-import Language.Haskell.Liquid.Desugar.DsUtils
+import Language.Haskell.Liquid.Desugar78.DsGRHSs
+import Language.Haskell.Liquid.Desugar78.DsUtils
 
 import HsSyn		-- lots of things
 import CoreSyn		-- lots of things

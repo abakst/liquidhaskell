@@ -1,5 +1,5 @@
 \begin{code}
-module Language.Haskell.Liquid.Desugar.DsExpr where
+module Language.Haskell.Liquid.Desugar78.DsExpr where
 import HsSyn    ( HsExpr, LHsExpr, HsLocalBinds )
 import Var      ( Id )
 import DsMonad  ( DsM )

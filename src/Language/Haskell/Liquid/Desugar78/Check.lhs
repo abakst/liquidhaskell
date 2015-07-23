@@ -5,14 +5,14 @@
 % Author: Juan J. Quintela    <quintela@krilin.dc.fi.udc.es>
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.Check ( check , ExhaustivePat ) where
+module Language.Haskell.Liquid.Desugar78.Check ( check , ExhaustivePat ) where
 
 -- #include "HsVersions.h"
 
 import HsSyn
 import TcHsSyn
-import Language.Haskell.Liquid.Desugar.DsUtils
-import Language.Haskell.Liquid.Desugar.MatchLit
+import Language.Haskell.Liquid.Desugar78.DsUtils
+import Language.Haskell.Liquid.Desugar78.MatchLit
 import Id
 import ConLike
 import DataCon

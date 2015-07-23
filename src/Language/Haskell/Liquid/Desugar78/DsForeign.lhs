@@ -6,7 +6,7 @@
 Desugaring foreign declarations (see also DsCCall).
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.DsForeign ( dsForeigns
+module Language.Haskell.Liquid.Desugar78.DsForeign ( dsForeigns
                  , dsForeigns'
                  , dsFImport, dsCImport, dsFCall, dsPrimCall
                  , dsFExport, dsFExportDynamic, mkFExportCBits

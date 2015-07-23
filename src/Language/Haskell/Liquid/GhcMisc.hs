@@ -77,7 +77,7 @@ import Language.Fixpoint.Names      (symSepName, isSuffixOfSym, singletonSym)
 
 
 #if __GLASGOW_HASKELL__ < 710
-import Language.Haskell.Liquid.Desugar.HscMain
+import Language.Haskell.Liquid.Desugar78.HscMain
 #else
 import qualified HscMain as GHC
 #endif

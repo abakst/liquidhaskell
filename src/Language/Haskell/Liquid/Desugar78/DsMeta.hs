@@ -13,7 +13,7 @@
 -- a Royal Pain (triggers other recompilation).
 -----------------------------------------------------------------------------
 
-module Language.Haskell.Liquid.Desugar.DsMeta( dsBracket,
+module Language.Haskell.Liquid.Desugar78.DsMeta( dsBracket,
                templateHaskellNames, qTyConName, nameTyConName,
                liftName, liftStringName, expQTyConName, patQTyConName,
                decQTyConName, decsQTyConName, typeQTyConName,
@@ -25,9 +25,9 @@ module Language.Haskell.Liquid.Desugar.DsMeta( dsBracket,
 
 -- #include "HsVersions.h"
 
-import Language.Haskell.Liquid.Desugar.DsExpr ( dsExpr )
+import Language.Haskell.Liquid.Desugar78.DsExpr ( dsExpr )
 
-import Language.Haskell.Liquid.Desugar.MatchLit
+import Language.Haskell.Liquid.Desugar78.MatchLit
 import DsMonad
 
 import qualified Language.Haskell.TH as TH

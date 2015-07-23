@@ -1,5 +1,5 @@
 \begin{code}
-module Language.Haskell.Liquid.Desugar.Match where
+module Language.Haskell.Liquid.Desugar78.Match where
 import Var      ( Id )
 import TcType   ( Type )
 import DsMonad  ( DsM, EquationInfo, MatchResult )

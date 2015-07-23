@@ -13,11 +13,11 @@ Pattern-matching constructors
 --     http://ghc.haskell.org/trac/ghc/wiki/Commentary/CodingStyle#TabsvsSpaces
 -- for details
 
-module Language.Haskell.Liquid.Desugar.MatchCon ( matchConFamily, matchPatSyn ) where
+module Language.Haskell.Liquid.Desugar78.MatchCon ( matchConFamily, matchPatSyn ) where
 
 -- #include "HsVersions.h"
 
-import {-# SOURCE #-} Language.Haskell.Liquid.Desugar.Match	( match )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar78.Match	( match )
 
 import HsSyn
 import DsBinds
@@ -26,7 +26,7 @@ import DataCon
 import PatSyn
 import TcType
 import DsMonad
-import Language.Haskell.Liquid.Desugar.DsUtils
+import Language.Haskell.Liquid.Desugar78.DsUtils
 import MkCore   ( mkCoreLets )
 import Util
 import ListSetOps ( runs )

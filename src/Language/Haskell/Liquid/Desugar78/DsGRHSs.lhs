@@ -6,12 +6,12 @@
 Matching guarded right-hand-sides (GRHSs)
 
 \begin{code}
-module Language.Haskell.Liquid.Desugar.DsGRHSs ( dsGuarded, dsGRHSs, dsGRHS ) where
+module Language.Haskell.Liquid.Desugar78.DsGRHSs ( dsGuarded, dsGRHSs, dsGRHS ) where
 
 -- #include "HsVersions.h"
 
-import {-# SOURCE #-} Language.Haskell.Liquid.Desugar.DsExpr  ( dsLExpr, dsLocalBinds )
-import {-# SOURCE #-} Language.Haskell.Liquid.Desugar.Match   ( matchSinglePat )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar78.DsExpr  ( dsLExpr, dsLocalBinds )
+import {-# SOURCE #-} Language.Haskell.Liquid.Desugar78.Match   ( matchSinglePat )
 
 import HsSyn
 import MkCore
@@ -20,7 +20,7 @@ import Var
 import Type
 
 import DsMonad
-import Language.Haskell.Liquid.Desugar.DsUtils
+import Language.Haskell.Liquid.Desugar78.DsUtils
 import TysWiredIn
 import PrelNames
 import Module
